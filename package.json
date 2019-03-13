@@ -1,0 +1,22 @@
+{
+  "name": "creatingjsonapi",
+  "version": "1.0.0",
+  "description": "Repo for creating a JSON API that will teach me for future projects",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-la/creatingJsonAPI.git"
+  },
+  "author": "Daniel La",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/d-la/creatingJsonAPI/issues"
+  },
+  "homepage": "https://github.com/d-la/creatingJsonAPI#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
