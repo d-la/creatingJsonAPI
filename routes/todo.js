@@ -11,4 +11,14 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+    // console.log(req.body);
+    mongoDB.Todo.create(req.body)
+    .then( (newToDo) => {
+        res.json(newToDo);
+    }).catch( (error) => {
+        res.send(error);
+    });
+});
+
 module.exports = router;
