@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    // console.log(req.body);
+    // Create a new todo item with mongoDB
     mongoDB.Todo.create(req.body)
     .then( (newToDo) => {
         res.json(newToDo);
@@ -21,4 +21,22 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+    // Look up a todo by ID and return the todo if found
+    mongoDB.Todo.findById(req.params.id)
+    .then( (requestedToDo) => {
+        res.json(requestedToDo);
+    }).catch( (error) => {
+        res.send(error);
+    });
+});
+
+
+router.put('/:id', (req, res) => {
+    mongoDB.Todo.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}).then( (toDo) => {
+        res.send(toDo);
+    }).catch( (error) => {
+        res.send(error);
+    });
+});
 module.exports = router;
