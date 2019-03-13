@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
     });
 });
 
+// Create new to do route and handler
 router.post('/', (req, res) => {
-    // Create a new todo item with mongoDB
     mongoDB.Todo.create(req.body)
     .then( (newToDo) => {
         res.json(newToDo);
@@ -21,6 +21,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// Get single to do route and handler
 router.get('/:id', (req, res) => {
     // Look up a todo by ID and return the todo if found
     mongoDB.Todo.findById(req.params.id)
@@ -31,7 +32,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-
+// Update (PUT) single to do route and handler
 router.put('/:id', (req, res) => {
     mongoDB.Todo.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}).then( (toDo) => {
         res.send(toDo);
@@ -39,4 +40,15 @@ router.put('/:id', (req, res) => {
         res.send(error);
     });
 });
+
+// Delete single to do route and handler
+router.delete('/:id', (req, res) => {
+    mongoDB.Todo.remove({_id: req.params.id})
+    .then( () => {
+        res.json({delete: true});
+    }).catch( (error) => {
+        res.send(error);
+    });
+});
+
 module.exports = router;
