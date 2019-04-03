@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 let express = require('express'),
     toDoRoutes = require('./routes/todo'),
     bodyParser = require('body-parser');
